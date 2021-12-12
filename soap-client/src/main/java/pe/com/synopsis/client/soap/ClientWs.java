@@ -31,9 +31,9 @@ public class ClientWs implements Serializable
         return ((ClientsResponse) template.marshalSendAndReceive(uri, request, callback));
     }
 
-    public ClientsResponse add(AddClientRequest request)
+    public StatusResponse add(AddClientRequest request)
     {
-        return ((ClientsResponse) template.marshalSendAndReceive(uri, request, callback));
+        return ((StatusResponse) template.marshalSendAndReceive(uri, request, callback));
     }
 
     public StatusResponse edit(EditClientRequest request)
