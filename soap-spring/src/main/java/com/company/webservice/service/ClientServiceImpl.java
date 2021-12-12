@@ -9,6 +9,7 @@ import com.company.webservice.wsdl.EditClientRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,7 @@ public class ClientServiceImpl {
                 ((List<Client>) repository.findAll()).stream().map(
                     (client) -> {
                         com.company.webservice.wsdl.Client clientWs = new com.company.webservice.wsdl.Client();
-                        clientWs.setClientId(client.getClientId());
+                        clientWs.setClientId(BigInteger.valueOf(client.getClientId()));
                         clientWs.setName(client.getName());
                         clientWs.setLastname(client.getLastName());
                         clientWs.setPhone(client.getPhone());
@@ -50,7 +51,7 @@ public class ClientServiceImpl {
         com.company.webservice.wsdl.Client clientWs = request.getClient();
         repository.save(
                 Client.builder()
-                    .clientId(clientWs.getClientId())
+                    .clientId(clientWs.getClientId().longValue())
                     .name(clientWs.getName())
                     .lastName(clientWs.getLastname())
                     .phone(clientWs.getPhone())
