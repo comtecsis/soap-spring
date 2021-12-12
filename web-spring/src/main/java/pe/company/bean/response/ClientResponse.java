@@ -7,7 +7,7 @@ import java.math.BigInteger;
 
 @Data
 public class ClientResponse implements Serializable {
-    private BigInteger clientId;
+    private Long clientId;
     private String name;
     private String lastname;
     private String phone;

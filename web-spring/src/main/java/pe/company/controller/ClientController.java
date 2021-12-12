@@ -18,19 +18,19 @@ public class ClientController {
 
     private ClientServiceImpl clientService;
 
-    @PostMapping
+    @PostMapping("/add")
     public String add(AddClientRequest beanRequest) {
         clientService.add(beanRequest);
         return "redirect:/";
     }
 
-    @PutMapping
+    @PostMapping("/edit")
     public String edit(EditClientRequest beanRequest) {
         clientService.edit(beanRequest);
         return "redirect:/";
     }
 
-    @DeleteMapping
+    @PostMapping("/delete")
     public String delete(DeleteClientRequest beanRequest) {
         clientService.delete(beanRequest);
         return "redirect:/";

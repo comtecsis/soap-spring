@@ -6,5 +6,5 @@ import java.math.BigInteger;
 
 @Data
 public class DeleteClientRequest {
-    private BigInteger id;
+    private Long id;
 }

@@ -20,4 +20,19 @@ $(document).ready(function(){
 			$("#selectAll").prop("checked", false);
 		}
 	});
+
+	$('.edit').on('click', onEdit);
+	$('.delete').on('click', onDelete);
+
+	function onEdit(e){
+	    e.preventDefault();
+	    var id = $(this).data('id');
+        $('#editEmployeeModal').find('input[name=id]').val(id);
+	}
+
+	function onDelete(e){
+	    e.preventDefault();
+	    var id = $(this).data('id');
+        $('#deleteEmployeeModal').find('input[name=id]').val(id);
+	}
 });
