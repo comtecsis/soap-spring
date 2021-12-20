@@ -1,17 +1,18 @@
 package com.company.webservice.service;
 
-import com.company.webservice.wsdl.AddClientRequest;
-import com.company.webservice.wsdl.ClientsResponse;
-import com.company.webservice.model.Client;
-import com.company.webservice.repository.ClientRepository;
-import com.company.webservice.wsdl.DeleteClientRequest;
-import com.company.webservice.wsdl.EditClientRequest;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.company.webservice.model.Client;
+import com.company.webservice.repository.ClientRepository;
+import com.company.webservice.wsdl.AddClientRequest;
+import com.company.webservice.wsdl.ClientsResponse;
+import com.company.webservice.wsdl.DeleteClientRequest;
+import com.company.webservice.wsdl.EditClientRequest;
+
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
@@ -25,7 +26,7 @@ public class ClientServiceImpl {
                 ((List<Client>) repository.findAll()).stream().map(
                     (client) -> {
                         com.company.webservice.wsdl.Client clientWs = new com.company.webservice.wsdl.Client();
-                        clientWs.setClientId(BigInteger.valueOf(client.getClientId()));
+                        clientWs.setClientId(client.getClientId());
                         clientWs.setName(client.getName());
                         clientWs.setLastname(client.getLastName());
                         clientWs.setPhone(client.getPhone());
@@ -51,7 +52,7 @@ public class ClientServiceImpl {
         com.company.webservice.wsdl.Client clientWs = request.getClient();
         repository.save(
                 Client.builder()
-                    .clientId(clientWs.getClientId().longValue())
+                    .clientId(clientWs.getClientId())
                     .name(clientWs.getName())
                     .lastName(clientWs.getLastname())
                     .phone(clientWs.getPhone())

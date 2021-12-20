@@ -1,11 +1,10 @@
 package com.company.webservice.repository;
 
-import com.company.webservice.model.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigInteger;
+import com.company.webservice.model.Client;
 
 @Repository
-public interface ClientRepository extends CrudRepository<Client, BigInteger> {
+public interface ClientRepository extends CrudRepository<Client, Long> {
 }

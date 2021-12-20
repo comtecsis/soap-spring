@@ -29,7 +29,7 @@
     <xs:element name="deleteClientRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="clientId" type="xs:unsignedLong"/>
+                <xs:element name="clientId" type="xs:long"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -67,7 +67,7 @@
 
     <xs:complexType name="client">
         <xs:sequence>
-            <xs:element name="clientId" type="xs:unsignedLong"/>
+            <xs:element name="clientId" type="xs:long"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="lastname" type="xs:string"/>
             <xs:element name="phone" type="xs:string"/>
