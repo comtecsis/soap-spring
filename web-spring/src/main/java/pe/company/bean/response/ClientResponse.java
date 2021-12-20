@@ -1,13 +1,15 @@
 package pe.company.bean.response;
 
-import lombok.Data;
-
 import java.io.Serializable;
-import java.math.BigInteger;
+
+import lombok.Data;
 
 @Data
 public class ClientResponse implements Serializable {
-    private Long clientId;
+
+	private static final long serialVersionUID = 3731512622883862058L;
+	
+	private Long clientId;
     private String name;
     private String lastname;
     private String phone;
