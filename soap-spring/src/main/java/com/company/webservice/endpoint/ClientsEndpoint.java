@@ -1,20 +1,27 @@
 package com.company.webservice.endpoint;
 
-import com.company.webservice.enumeration.StatusEnum;
-import com.company.webservice.service.ClientServiceImpl;
-import com.company.webservice.wsdl.*;
-import lombok.AllArgsConstructor;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
+import com.company.webservice.enumeration.StatusEnum;
+import com.company.webservice.service.ClientService;
+import com.company.webservice.wsdl.AddClientRequest;
+import com.company.webservice.wsdl.ClientsResponse;
+import com.company.webservice.wsdl.DeleteClientRequest;
+import com.company.webservice.wsdl.EditClientRequest;
+import com.company.webservice.wsdl.ListClientRequest;
+import com.company.webservice.wsdl.StatusResponse;
+
+import lombok.AllArgsConstructor;
 
 @Endpoint
 @AllArgsConstructor
 public class ClientsEndpoint {
     private static final String NAMESPACE_URI = "http://company.com/webservice";
 
-    private ClientServiceImpl service;
+    private ClientService service;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "listClientRequest")
     @ResponsePayload

@@ -1,4 +1,4 @@
-package com.company.webservice.service;
+package com.company.webservice.service.impl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.company.webservice.model.Client;
 import com.company.webservice.repository.ClientRepository;
+import com.company.webservice.service.ClientService;
 import com.company.webservice.wsdl.AddClientRequest;
 import com.company.webservice.wsdl.ClientsResponse;
 import com.company.webservice.wsdl.DeleteClientRequest;
@@ -16,10 +17,11 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class ClientServiceImpl {
+public class ClientServiceImpl implements ClientService{
 
     private ClientRepository repository;
 
+	@Override
     public ClientsResponse findClients() {
         ClientsResponse response = new ClientsResponse();
         response.getClients().addAll(
@@ -38,6 +40,7 @@ public class ClientServiceImpl {
         return response;
     }
 
+	@Override
     public void addClient(AddClientRequest request) {
         repository.save(
             Client.builder()
@@ -48,6 +51,7 @@ public class ClientServiceImpl {
         );
     }
 
+    @Override
     public void editClient(EditClientRequest request) {
         com.company.webservice.wsdl.Client clientWs = request.getClient();
         repository.save(
@@ -60,6 +64,7 @@ public class ClientServiceImpl {
         );
     }
 
+    @Override
     public void deleteClient(DeleteClientRequest request) {
         repository.deleteById(request.getClientId());
     }
